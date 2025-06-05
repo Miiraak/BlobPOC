@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace BlobPOC
 {
@@ -11,23 +12,25 @@ namespace BlobPOC
             _data = BlobStore.Read();
         }
 
-        public static string Get(string key, string defaultValue = "")
+        public static string Get(string key)
         {
-            return _data.TryGetValue(key, out var value) ? value : defaultValue;
+            _data.TryGetValue(key, out var value);
+            return value;
+
         }
 
-        public static bool GetBool(string key, bool defaultValue = false)
+        public static bool GetBool(string key)
         {
-            if (_data.TryGetValue(key, out var value) && bool.TryParse(value, out var result))
-                return result;
-            return defaultValue;
+            _data.TryGetValue(key, out var value);
+            bool.TryParse(value, out var result);
+            return result;
         }
 
-        public static int GetInt(string key, int defaultValue = 0)
+        public static int GetInt(string key)
         {
-            if (_data.TryGetValue(key, out var value) && int.TryParse(value, out var result))
-                return result;
-            return defaultValue;
+            _data.TryGetValue(key, out var value);
+            int.TryParse(value, out var result);
+            return result;
         }
 
         public static void Set(string key, object value)
@@ -37,8 +40,8 @@ namespace BlobPOC
 
         public static void Save()
         {
-            string exePath = Application.ExecutablePath;
-            BlobStore.Write(exePath, _data);
+            string exePath = Process.GetCurrentProcess().MainModule.FileName;
+            SelfUpdater.UpdateAndRestart(_data);
         }
     }
 }

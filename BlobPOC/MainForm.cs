@@ -11,36 +11,18 @@ namespace BlobPOC
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            blobData = BlobStore.Read();
 
-            // set the text box with the value from blobData if it exists
-            if (blobData.TryGetValue("lang", out string langValue))
-                comboBoxLang.Text = langValue;
-            else
-                comboBoxLang.Text = "en-US"; // default value
-
-            if (blobData.TryGetValue("ext", out string extValue))
-                comboBoxExt.Text = extValue;
-            else
-                comboBoxExt.Text = ".log"; // default value
-
-            if (blobData.TryGetValue("autolog", out string autoLogValue))
-            {
-                if (autoLogValue != "_____")
-                    checkBoxAutoLog.Checked = bool.Parse(autoLogValue);
-            }
-            else
-            {
-                checkBoxAutoLog.Checked = false; // default value
-            }
+            comboBoxLang.Text = AppSettings.Get("lang");
+            comboBoxExt.Text = AppSettings.Get("ext");
+            checkBoxAutoLog.Checked = AppSettings.GetBool("autolog");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            blobData["lang"] = comboBoxLang.Text;
-            blobData["ext"] = comboBoxExt.Text;
-            blobData["autolog"] = checkBoxAutoLog.Checked.ToString();
-            SelfUpdater.UpdateAndRestart(blobData);
+            AppSettings.Set("lang", comboBoxLang.Text);
+            AppSettings.Set("ext", comboBoxExt.Text);
+            AppSettings.Set("autolog", checkBoxAutoLog.Checked);
+            AppSettings.Save();
         }
     }
 }
