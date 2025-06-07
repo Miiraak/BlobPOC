@@ -1,3 +1,5 @@
+using BlobPE;
+
 namespace BlobPOC
 {
     internal static class Program
@@ -8,11 +10,14 @@ namespace BlobPOC
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length == 3 && args[0] == "--update")
+            Dictionary<string, int> defaultData = new Dictionary<string, int>
             {
-                SelfUpdater.ApplyUpdate(args[1], args[2]);
-                return;
-            }
+                { "lang", 5 },
+                { "ext", 5 },
+                { "autolog", 5 }
+            };
+            Blob.CheckForUpdates(args, defaultData);
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

@@ -45,7 +45,7 @@
             button1.TabIndex = 0;
             button1.Text = "OK";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += Button1_Click;
             // 
             // label1
             // 

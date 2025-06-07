@@ -1,28 +1,28 @@
+using BlobPE;
+
 namespace BlobPOC
 {
     public partial class MainForm : Form
     {
-        private static Dictionary<string, string> blobData = new Dictionary<string, string>();
-
         public MainForm()
         {
             InitializeComponent();
+            Blob.RemoveUpdateFiles();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            comboBoxLang.Text = AppSettings.Get("lang");
-            comboBoxExt.Text = AppSettings.Get("ext");
-            checkBoxAutoLog.Checked = AppSettings.GetBool("autolog");
+            comboBoxLang.Text = Blob.Get("lang");
+            comboBoxExt.Text = Blob.Get("ext");
+            checkBoxAutoLog.Checked = Blob.GetBool("autolog");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            AppSettings.Set("lang", comboBoxLang.Text);
-            AppSettings.Set("ext", comboBoxExt.Text);
-            AppSettings.Set("autolog", checkBoxAutoLog.Checked);
-            AppSettings.Save();
+            Blob.Set("lang", comboBoxLang.Text);
+            Blob.Set("ext", comboBoxExt.Text);
+            Blob.Set("autolog", checkBoxAutoLog.Checked);
+            Blob.Save();
         }
     }
 }
