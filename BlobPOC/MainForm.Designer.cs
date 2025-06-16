@@ -28,91 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            ButtonSave = new Button();
             label1 = new Label();
             label2 = new Label();
             label4 = new Label();
-            comboBoxLang = new ComboBox();
-            comboBoxExt = new ComboBox();
-            checkBoxAutoLog = new CheckBox();
+            checkBoxBool = new CheckBox();
+            ButtonClear = new Button();
+            ButtonDelete = new Button();
+            textBoxInt = new TextBox();
+            textBoxString = new TextBox();
+            progressBarInt = new ProgressBar();
             SuspendLayout();
             // 
-            // button1
+            // ButtonSave
             // 
-            button1.Location = new Point(133, 126);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "OK";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += Button1_Click;
+            ButtonSave.Location = new Point(15, 174);
+            ButtonSave.Name = "ButtonSave";
+            ButtonSave.Size = new Size(219, 23);
+            ButtonSave.TabIndex = 0;
+            ButtonSave.Text = "Save";
+            ButtonSave.UseVisualStyleBackColor = true;
+            ButtonSave.Click += ButtonSave_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(52, 15);
+            label1.Size = new Size(44, 15);
             label1.TabIndex = 1;
-            label1.Text = "Langue :";
+            label1.Text = "String :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 130);
+            label2.Location = new Point(15, 139);
             label2.Name = "label2";
-            label2.Size = new Size(59, 15);
+            label2.Size = new Size(37, 15);
             label2.TabIndex = 3;
-            label2.Text = "AutoLog :";
+            label2.Text = "Bool :";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 69);
+            label4.Location = new Point(12, 59);
             label4.Name = "label4";
-            label4.Size = new Size(126, 15);
+            label4.Size = new Size(27, 15);
             label4.TabIndex = 5;
-            label4.Text = "Base export extension :";
+            label4.Text = "Int :";
             // 
-            // comboBoxLang
+            // checkBoxBool
             // 
-            comboBoxLang.FormattingEnabled = true;
-            comboBoxLang.Items.AddRange(new object[] { "en-US", "fr-FR", "it-IT" });
-            comboBoxLang.Location = new Point(12, 27);
-            comboBoxLang.Name = "comboBoxLang";
-            comboBoxLang.Size = new Size(196, 23);
-            comboBoxLang.TabIndex = 7;
+            checkBoxBool.AutoSize = true;
+            checkBoxBool.Location = new Point(116, 139);
+            checkBoxBool.Name = "checkBoxBool";
+            checkBoxBool.Size = new Size(15, 14);
+            checkBoxBool.TabIndex = 10;
+            checkBoxBool.UseVisualStyleBackColor = true;
             // 
-            // comboBoxExt
+            // ButtonClear
             // 
-            comboBoxExt.FormattingEnabled = true;
-            comboBoxExt.Items.AddRange(new object[] { ".json", ".zip", ".xml", ".txt", ".log" });
-            comboBoxExt.Location = new Point(12, 87);
-            comboBoxExt.Name = "comboBoxExt";
-            comboBoxExt.Size = new Size(196, 23);
-            comboBoxExt.TabIndex = 9;
+            ButtonClear.Location = new Point(15, 206);
+            ButtonClear.Name = "ButtonClear";
+            ButtonClear.Size = new Size(106, 23);
+            ButtonClear.TabIndex = 11;
+            ButtonClear.Text = "Clear Blob";
+            ButtonClear.UseVisualStyleBackColor = true;
+            ButtonClear.Click += ButtonClear_Click;
             // 
-            // checkBoxAutoLog
+            // ButtonDelete
             // 
-            checkBoxAutoLog.AutoSize = true;
-            checkBoxAutoLog.Location = new Point(77, 131);
-            checkBoxAutoLog.Name = "checkBoxAutoLog";
-            checkBoxAutoLog.Size = new Size(15, 14);
-            checkBoxAutoLog.TabIndex = 10;
-            checkBoxAutoLog.UseVisualStyleBackColor = true;
+            ButtonDelete.Location = new Point(127, 206);
+            ButtonDelete.Name = "ButtonDelete";
+            ButtonDelete.Size = new Size(107, 23);
+            ButtonDelete.TabIndex = 12;
+            ButtonDelete.Text = "Delete Blob";
+            ButtonDelete.UseVisualStyleBackColor = true;
+            ButtonDelete.Click += ButtonDelete_Click;
+            // 
+            // textBoxInt
+            // 
+            textBoxInt.Location = new Point(12, 77);
+            textBoxInt.Name = "textBoxInt";
+            textBoxInt.Size = new Size(222, 23);
+            textBoxInt.TabIndex = 13;
+            // 
+            // textBoxString
+            // 
+            textBoxString.Location = new Point(12, 27);
+            textBoxString.Name = "textBoxString";
+            textBoxString.Size = new Size(222, 23);
+            textBoxString.TabIndex = 14;
+            // 
+            // progressBarInt
+            // 
+            progressBarInt.Location = new Point(12, 106);
+            progressBarInt.Name = "progressBarInt";
+            progressBarInt.Size = new Size(222, 23);
+            progressBarInt.TabIndex = 15;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(220, 160);
-            Controls.Add(checkBoxAutoLog);
-            Controls.Add(comboBoxExt);
-            Controls.Add(comboBoxLang);
+            ClientSize = new Size(246, 241);
+            Controls.Add(progressBarInt);
+            Controls.Add(textBoxString);
+            Controls.Add(textBoxInt);
+            Controls.Add(ButtonDelete);
+            Controls.Add(ButtonClear);
+            Controls.Add(checkBoxBool);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(ButtonSave);
             Name = "MainForm";
             Text = "BlobPOC";
             Load += MainForm_Load;
@@ -122,12 +151,15 @@
 
         #endregion
 
-        private Button button1;
+        private Button ButtonSave;
         private Label label1;
         private Label label2;
         private Label label4;
-        private ComboBox comboBoxLang;
-        private ComboBox comboBoxExt;
-        private CheckBox checkBoxAutoLog;
+        private CheckBox checkBoxBool;
+        private Button ButtonClear;
+        private Button ButtonDelete;
+        private TextBox textBoxInt;
+        private TextBox textBoxString;
+        private ProgressBar progressBarInt;
     }
 }

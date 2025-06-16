@@ -1,25 +1,25 @@
+// You need to ensure that the BlobPE library is referenced in your project.
 using BlobPE;
 
 namespace BlobPOC
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
+        // Add the argument to the Main method to allow BlobPE to process command line arguments.
         static void Main(string[] args)
         {
+            // BlobPE needs to be initialized with a Dictionary of default values.
+            // Important: `int` set the maximum length for related key, it's not the actual value.
             Dictionary<string, int> defaultData = new Dictionary<string, int>
             {
-                { "lang", 5 },
-                { "ext", 5 },
-                { "autolog", 5 }
+                { "string", 50 },
+                { "int", 2 },
+                { "bool", 5 }
             };
+            // Then you need to check for updates and initialize the BlobPE library with the arguments and default data.
             Blob.CheckForUpdates(args, defaultData);
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
         }

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlobPE" Version="1.0.2" />
+    <PackageReference Include="BlobPE" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
